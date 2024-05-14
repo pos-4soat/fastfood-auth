@@ -1,31 +1,38 @@
 ﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:14452",
-      "sslPort": 0
-    }
-  },
   "profiles": {
-    "http": {
+    "fastfood-auth.API": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5102",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:57095;http://localhost:57096"
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
+    "Mock Lambda Test Tool": {
+      "commandName": "Executable",
+      "executablePath": "%USERPROFILE%\\.dotnet\\tools\\dotnet-lambda-test-tool-8.0.exe",
+      "commandLineArgs": "--port 5050",
+      "workingDirectory": ".\\bin\\$(Configuration)\\net8.0"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "ASPNETCORE_HTTPS_PORTS": "8081",
+        "ASPNETCORE_HTTP_PORTS": "8080",
+        "AWS_ACCESS_KEY_DYNAMO": "",
+        "AWS_SECRET_KEY_DYNAMO": "",
+        "AWS_TABLE_NAME_DYNAMO": "",
+        "LOG_REGION": "",
+        "LOG_GROUP": "",
+        "AWS_USER_POOL_ID": "",
+        "AWS_CLIENT_ID_COGNITO": "",
+        "GUEST_EMAIL": "",
+        "GUEST_IDENTIFICATION": ""
+      },
+      "publishAllPorts": true,
+      "useSSL": true
     }
   }
 }
