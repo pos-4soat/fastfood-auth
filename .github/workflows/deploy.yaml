@@ -7,7 +7,7 @@ on:
 env:
   ECR_REPOSITORY: ecr-fastfood_auth
   AWS_REGION: us-east-1
-  LAMBDA_FUNCTION_NAME: FastFoodAuth
+  LAMBDA_FUNCTION_NAME: fastfood_auth
 
 jobs:
   build:
