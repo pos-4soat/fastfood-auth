@@ -10,8 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace fastfood_auth.API.Controllers;
 
 [ApiController]
-[ApiVersion("1.0")]
-[Route("v{ver:apiVersion}/[controller]")]
+[Route("[controller]")]
 public class UserController(IMediator _mediator) : BaseController
 {
     [HttpPost("CreateUser")]
