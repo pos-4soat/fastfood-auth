@@ -1,6 +1,7 @@
 ﻿using Amazon.CognitoIdentityProvider;
 using Amazon.DynamoDBv2;
 using Amazon.Runtime;
+using fastfood_auth.Application.Shared.BaseResponse;
 using fastfood_auth.Domain.Contracts.Authentication;
 using fastfood_auth.Domain.Contracts.Repository;
 using fastfood_auth.Infra.Cognito.Authentication;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.AWS.Logger;
 using NLog.Config;
+using System.Reflection;
 
 namespace fastfood_auth.Infra.IoC;
 
@@ -21,6 +23,8 @@ public static class DependencyInjection
         ConfigureCognito(services);
         ConfigureLogging(services);
         services.ConfigureServices();
+        services.ConfigureAutomapper();
+        services.ConfigureMediatr();
         ConfigureDatabase(services);
     }
 
@@ -64,6 +68,15 @@ public static class DependencyInjection
         Logger log = LogManager.GetCurrentClassLogger();
 
         _ = services.AddSingleton(log);
+    }
+    private static void ConfigureAutomapper(this IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(Result).Assembly);
+    }
+
+    private static void ConfigureMediatr(this IServiceCollection services)
+    {
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Result).Assembly));
     }
 
     private static void ConfigureDatabase(IServiceCollection services)
