@@ -9,17 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E7636EAE-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6F218A34-FC99-4B7F-AF40-88597699917B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fastfood-auth.Application", "src\Core\fastfood-auth.Application\fastfood-auth.Application.csproj", "{D2391D69-6253-4066-97FC-C919F838A4C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fastfood-auth.Application", "src\Core\fastfood-auth.Application\fastfood-auth.Application.csproj", "{D2391D69-6253-4066-97FC-C919F838A4C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fastfood-auth.Infra.Persistance", "src\Infrastructure\fastfood-auth.Infra.Persistance\fastfood-auth.Infra.Persistance.csproj", "{9404A309-342F-4820-926B-1C1A9CDD361D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fastfood-auth.Infra.Persistance", "src\Infrastructure\fastfood-auth.Infra.Persistance\fastfood-auth.Infra.Persistance.csproj", "{9404A309-342F-4820-926B-1C1A9CDD361D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fastfood-auth.Domain", "src\Core\fastfood-auth.Domain\fastfood-auth.Domain.csproj", "{76A98222-87E9-48C8-9F12-91EC47BF2B44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fastfood-auth.Domain", "src\Core\fastfood-auth.Domain\fastfood-auth.Domain.csproj", "{76A98222-87E9-48C8-9F12-91EC47BF2B44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fastfood-auth.Infra.Cognito", "src\Infrastructure\fastfood-auth.Infra.Cognito\fastfood-auth.Infra.Cognito.csproj", "{FDBDA3F6-D407-47C8-A21F-C51DBE11A13A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fastfood-auth.Infra.Cognito", "src\Infrastructure\fastfood-auth.Infra.Cognito\fastfood-auth.Infra.Cognito.csproj", "{FDBDA3F6-D407-47C8-A21F-C51DBE11A13A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fastfood-auth.Infra.IoC", "src\Infrastructure\fastfood-auth.Infra.IoC\fastfood-auth.Infra.IoC.csproj", "{B021BA75-A779-47D3-87DF-B0A75FCD51A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fastfood-auth.Infra.IoC", "src\Infrastructure\fastfood-auth.Infra.IoC\fastfood-auth.Infra.IoC.csproj", "{B021BA75-A779-47D3-87DF-B0A75FCD51A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fastfood-auth.API", "src\fastfood-auth.API\fastfood-auth.API.csproj", "{8A989832-F4A9-454F-A89A-F69A73D0B839}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fastfood-auth.API", "src\fastfood-auth.API\fastfood-auth.API.csproj", "{8A989832-F4A9-454F-A89A-F69A73D0B839}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E001CCB3-A920-4958-8187-69A4AF8AF310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fastfood-auth.Tests", "tests\fastfood-auth.Tests\fastfood-auth.Tests.csproj", "{2A5EB073-25C7-4AA3-9869-A61CD61CFE87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,10 @@ Global
 		{8A989832-F4A9-454F-A89A-F69A73D0B839}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A989832-F4A9-454F-A89A-F69A73D0B839}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A989832-F4A9-454F-A89A-F69A73D0B839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5EB073-25C7-4AA3-9869-A61CD61CFE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5EB073-25C7-4AA3-9869-A61CD61CFE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5EB073-25C7-4AA3-9869-A61CD61CFE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5EB073-25C7-4AA3-9869-A61CD61CFE87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,7 @@ Global
 		{FDBDA3F6-D407-47C8-A21F-C51DBE11A13A} = {6F218A34-FC99-4B7F-AF40-88597699917B}
 		{B021BA75-A779-47D3-87DF-B0A75FCD51A3} = {6F218A34-FC99-4B7F-AF40-88597699917B}
 		{8A989832-F4A9-454F-A89A-F69A73D0B839} = {6ABF2630-08F1-48FE-A653-5ACFD301A1E8}
+		{2A5EB073-25C7-4AA3-9869-A61CD61CFE87} = {E001CCB3-A920-4958-8187-69A4AF8AF310}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4FAEF05-88CF-4727-BE2B-FD7FBB395F7D}

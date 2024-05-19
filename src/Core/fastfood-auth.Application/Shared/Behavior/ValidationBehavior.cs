@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Diagnostics.CodeAnalysis;
 
 namespace fastfood_auth.Application.Shared.Behavior;
 
+[ExcludeFromCodeCoverage]
 public class ValidationBehavior : ActionFilterAttribute
 {
     public ValidationBehavior()

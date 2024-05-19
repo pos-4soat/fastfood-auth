@@ -29,19 +29,6 @@ public abstract class BaseController : ControllerBase
         return new ValueTask<IActionResult>(StatusCode((int)HttpStatusCode.OK, response));
     }
 
-    protected ValueTask<IActionResult> GetResponseFromResult(
-       Result result)
-    {
-        if (result.IsFailure)
-        {
-            ErrorResponse<Error> errorResponse = CreateErrorResponseFromResult(result);
-
-            return new ValueTask<IActionResult>(StatusCode((int)result.StatusCode, errorResponse));
-        }
-
-        return new ValueTask<IActionResult>(StatusCode((int)HttpStatusCode.OK));
-    }
-
     private static ErrorResponse<Error> CreateErrorResponseFromResult(Result result)
     {
         Error errorReponse = new(result.ErrorCode);

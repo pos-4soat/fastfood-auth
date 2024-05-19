@@ -1,10 +1,12 @@
 using fastfood_auth.Application.Shared.BaseResponse;
 using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Mime;
 
 namespace fastfood_auth.API.Middleware;
 
+[ExcludeFromCodeCoverage]
 public class ExceptionHandlerMiddleware(
     RequestDelegate next)
 {

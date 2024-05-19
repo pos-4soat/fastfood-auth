@@ -12,10 +12,12 @@ using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.AWS.Logger;
 using NLog.Config;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace fastfood_auth.Infra.IoC;
 
+[ExcludeFromCodeCoverage]
 public static class DependencyInjection
 {
     public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
