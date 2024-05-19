@@ -32,7 +32,11 @@ public class CognitoUserAuthentication(AmazonCognitoIdentityProviderClient cogni
 
         AdminInitiateAuthResponse response = await cognito.AdminInitiateAuthAsync(request, cancellationToken);
 
-        cache.Set(user.Identification, response.AuthenticationResult.IdToken, TimeSpan.FromMinutes(30));
+        try
+        {
+            cache.Set(user.Identification, response.AuthenticationResult.IdToken, TimeSpan.FromMinutes(30));
+        }
+        catch{}
 
         return response.AuthenticationResult.IdToken;
     }

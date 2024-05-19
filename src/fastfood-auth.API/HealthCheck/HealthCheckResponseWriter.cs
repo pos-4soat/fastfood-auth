@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
 namespace fastfood_auth.API.HealthCheck;
 
+[ExcludeFromCodeCoverage]
 public static class HealthCheckResponseWriter
 {
     public static Task WriteResponse(HttpContext context, HealthReport report)
