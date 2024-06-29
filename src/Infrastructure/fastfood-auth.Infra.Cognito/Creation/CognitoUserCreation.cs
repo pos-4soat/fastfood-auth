@@ -31,4 +31,17 @@ public class CognitoUserCreation(AmazonCognitoIdentityProviderClient cognito) : 
 
         return response.User.Username;
     }
+
+    public async Task DeleteUser(UserEntity user, CancellationToken cancellationToken)
+    {
+        string? userPoolId = Environment.GetEnvironmentVariable("AWS_USER_POOL_ID");
+
+        AdminDeleteUserRequest request = new()
+        {
+            UserPoolId = userPoolId,
+            Username = user.Email
+        };
+
+        _ = await cognito.AdminDeleteUserAsync(request, cancellationToken);
+    }
 }

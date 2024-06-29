@@ -17,10 +17,10 @@ public class CognitoUserAuthentication(AmazonCognitoIdentityProviderClient cogni
         string? clientId = Environment.GetEnvironmentVariable("AWS_CLIENT_ID_COGNITO");
 
         Dictionary<string, string> authParameters = new Dictionary<string, string>
-    {
-        { "USERNAME", user.Email },
-        { "PASSWORD", user.Identification }
-    };
+        {
+            { "USERNAME", user.Email },
+            { "PASSWORD", user.Identification }
+        };
 
         AdminInitiateAuthRequest request = new AdminInitiateAuthRequest()
         {
