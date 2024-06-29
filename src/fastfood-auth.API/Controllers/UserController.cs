@@ -28,7 +28,7 @@ public class UserController(IMediator _mediator) : BaseController
         return await GetResponseFromResult(result);
     }
 
-    [HttpDelete]
+    [HttpDelete("DeleteUser")]
     public async Task<IActionResult> DeleteUser(DeleteUserRequest deleteRequest, CancellationToken cancellationToken)
     {
         Result<DeleteUserResponse> result = await _mediator.Send(deleteRequest, cancellationToken);
