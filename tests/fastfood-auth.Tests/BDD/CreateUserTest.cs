@@ -30,7 +30,7 @@ public class CreateUserTest : TestFixture
     [Given(@"I have a valid create user request")]
     public void GivenIHaveAValidCreateUserRequest()
     {
-        _request = new CreateUserRequest("Marcello", "email@email.com", "12345678909");
+        _request = new CreateUserRequest("Marcello", "email@email.com", "999999999", "12345678909");
     }
 
     [Given(@"the repository returns a successful result")]
