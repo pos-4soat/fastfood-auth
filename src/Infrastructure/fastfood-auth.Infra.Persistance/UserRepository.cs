@@ -26,6 +26,22 @@ public class UserRepository(IAmazonDynamoDB dynamoDb) : IUserRepository
         return response.HttpStatusCode == HttpStatusCode.OK;
     }
 
+    public async Task DeleteUserAsync(string identification, string email, CancellationToken cancellationToken)
+    {
+        DeleteItemRequest DeleteItemRequest = new DeleteItemRequest
+        {
+            TableName = Environment.GetEnvironmentVariable("AWS_TABLE_NAME_DYNAMO"),
+            ConditionExpression = "identification = :identification OR email = :email",
+            ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+            {
+                { ":identification", new AttributeValue { S = identification } },
+                { ":email", new AttributeValue { S = email } }
+            }
+        };
+
+        await dynamoDb.DeleteItemAsync(DeleteItemRequest, cancellationToken);
+    }
+
     public async Task<UserEntity> GetUserByCPFOrEmailAsync(string identification, string email, CancellationToken cancellationToken)
     {
         ScanRequest request = new ScanRequest

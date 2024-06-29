@@ -28,6 +28,5 @@ app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda
 
 app.Run();
 
-
 [ExcludeFromCodeCoverage]
 public partial class Program { }

@@ -1,6 +1,7 @@
 using fastfood_auth.API.Controllers.Base;
 using fastfood_auth.Application.Shared.BaseResponse;
 using fastfood_auth.Application.UseCases.CreateUser;
+using fastfood_auth.Application.UseCases.DeleteUser;
 using fastfood_auth.Application.UseCases.GetUser;
 using fastfood_auth.Application.UseCases.GuestAuth;
 using fastfood_auth.Application.UseCases.UserAuth;
@@ -24,6 +25,13 @@ public class UserController(IMediator _mediator) : BaseController
     public async Task<IActionResult> AuthenticateUser(string cpf, CancellationToken cancellationToken)
     {
         Result<UserAuthResponse> result = await _mediator.Send(new UserAuthRequest(cpf), cancellationToken);
+        return await GetResponseFromResult(result);
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteUser(DeleteUserRequest deleteRequest, CancellationToken cancellationToken)
+    {
+        Result<DeleteUserResponse> result = await _mediator.Send(deleteRequest, cancellationToken);
         return await GetResponseFromResult(result);
     }
 
