@@ -30,8 +30,8 @@ public class UserRepository(IAmazonDynamoDB dynamoDb) : IUserRepository
     {
         Dictionary<string, AttributeValue> key = new()
         {
-            { "Pk", new AttributeValue { S = identification } },
-            { "Sk", new AttributeValue { S = identification } }
+            { "pk", new AttributeValue { S = identification } },
+            { "sk", new AttributeValue { S = identification } }
         };
 
         DeleteItemRequest deleteItemRequest = new()
