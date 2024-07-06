@@ -28,18 +28,19 @@ public class UserRepository(IAmazonDynamoDB dynamoDb) : IUserRepository
 
     public async Task DeleteUserAsync(string identification, string email, CancellationToken cancellationToken)
     {
-        DeleteItemRequest DeleteItemRequest = new DeleteItemRequest
+        Dictionary<string, AttributeValue> key = new()
         {
-            TableName = Environment.GetEnvironmentVariable("AWS_TABLE_NAME_DYNAMO"),
-            ConditionExpression = "identification = :identification OR email = :email",
-            ExpressionAttributeValues = new Dictionary<string, AttributeValue>
-            {
-                { ":identification", new AttributeValue { S = identification } },
-                { ":email", new AttributeValue { S = email } }
-            }
+            { "Pk", new AttributeValue { S = identification } },
+            { "Sk", new AttributeValue { S = identification } }
         };
 
-        await dynamoDb.DeleteItemAsync(DeleteItemRequest, cancellationToken);
+        DeleteItemRequest deleteItemRequest = new()
+        {
+            TableName = Environment.GetEnvironmentVariable("AWS_TABLE_NAME_DYNAMO"),
+            Key = key
+        };
+
+        await dynamoDb.DeleteItemAsync(deleteItemRequest, cancellationToken);
     }
 
     public async Task<UserEntity> GetUserByCPFOrEmailAsync(string identification, string email, CancellationToken cancellationToken)

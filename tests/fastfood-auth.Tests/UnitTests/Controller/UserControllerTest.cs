@@ -1,5 +1,6 @@
 ﻿using fastfood_auth.API.Controllers;
 using fastfood_auth.Application.Shared.BaseResponse;
+using fastfood_auth.Application.UseCases.DeleteUser;
 using fastfood_auth.Application.UseCases.GetUser;
 using fastfood_auth.Application.UseCases.GuestAuth;
 using fastfood_auth.Application.UseCases.UserAuth;
@@ -74,5 +75,21 @@ public class UserControllerTest : TestFixture
         IActionResult result = await service.AuthenticateUser(request.cpf, default);
 
         AssertExtensions.AssertErrorResponse(result, HttpStatusCode.BadRequest, nameof(StatusResponse.ERROR));
+    }
+
+    [Test, Description("")]
+    public async Task ShouldDeleteUserAsync()
+    {
+        DeleteUserRequest request = _modelFakerFactory.GenerateRequest<DeleteUserRequest>();
+
+        Mock<IMediator> _mediatorMock = new Mock<IMediator>();
+        _mediatorMock.Setup(x => x.Send(It.IsAny<DeleteUserRequest>(), default))
+            .ReturnsAsync(Result<DeleteUserResponse>.Success(new DeleteUserResponse()));
+
+        UserController service = new(_mediatorMock.Object);
+
+        IActionResult result = await service.DeleteUser(request, default);
+
+        AssertExtensions.AssertResponse<DeleteUserRequest, DeleteUserResponse>(result, HttpStatusCode.OK, nameof(StatusResponse.SUCCESS), null);
     }
 }

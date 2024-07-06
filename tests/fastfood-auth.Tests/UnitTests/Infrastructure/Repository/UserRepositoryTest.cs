@@ -82,4 +82,25 @@ public class UserRepositoryTest : TestFixture
         _userAuthenticationMock.VerifyNoOtherCalls();
         _userCreationMock.VerifyNoOtherCalls();
     }
+
+    [Test, Description("Should delete user successfully")]
+    public async Task ShouldDeleteUsersAsync()
+    {
+        var entity = _modelFakerFactory.GenerateRequest<UserEntity>();
+
+        _dynamoMock.SetupDeleteItemAsync(new DeleteItemResponse() { HttpStatusCode = System.Net.HttpStatusCode.OK, ContentLength = 1234567 });
+
+        UserRepository service = new(_dynamoMock.Object);
+
+        var task = service.DeleteUserAsync(entity.Identification, entity.Email, default);
+        task.Wait();
+
+        Assert.That(task.IsCompletedSuccessfully, Is.True);
+
+        _dynamoMock.VerifyDeleteItemAsync();
+        _dynamoMock.VerifyNoOtherCalls();
+        _repositoryMock.VerifyNoOtherCalls();
+        _userAuthenticationMock.VerifyNoOtherCalls();
+        _userCreationMock.VerifyNoOtherCalls();
+    }
 }
