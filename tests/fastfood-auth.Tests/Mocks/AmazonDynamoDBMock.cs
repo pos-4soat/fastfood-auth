@@ -25,9 +25,16 @@ public class AmazonDynamoDBMock : BaseCustomMock<IAmazonDynamoDB>
         => Setup(x => x.ScanAsync(It.IsAny<ScanRequest>(), default))
             .ReturnsAsync(expectedReturn);
 
+    public void SetupDeleteItemAsync(DeleteItemResponse expectedReturn)
+        => Setup(x => x.DeleteItemAsync(It.IsAny<DeleteItemRequest>(), default))
+            .ReturnsAsync(expectedReturn);
+
     public void VerifyPutItemAsync(Times? times = null)
         => Verify(x => x.PutItemAsync(It.IsAny<PutItemRequest>(), default), times ?? Times.Once());
 
     public void VerifyScanAsync(Times? times = null)
         => Verify(x => x.ScanAsync(It.IsAny<ScanRequest>(), default), times ?? Times.Once());
+
+    public void VerifyDeleteItemAsync(Times? times = null)
+        => Verify(x => x.DeleteItemAsync(It.IsAny<DeleteItemRequest>(), default), times ?? Times.Once());
 }
