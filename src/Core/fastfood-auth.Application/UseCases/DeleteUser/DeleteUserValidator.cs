@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace fastfood_auth.Application.UseCases.DeleteUser;
 
-public class DeleteUserValidator : AbstractValidator<CreateUserRequest>
+public class DeleteUserValidator : AbstractValidator<DeleteUserRequest>
 {
     public DeleteUserValidator()
     {

@@ -29,4 +29,8 @@ public class AmazonCognitoIdentityProviderClientMock : Mock<AmazonCognitoIdentit
     public void SetupAdminCreateUserAsync(AdminCreateUserResponse expectedReturn)
         => Setup(c => c.AdminCreateUserAsync(It.IsAny<AdminCreateUserRequest>(), default))
             .ReturnsAsync(expectedReturn);
+
+    public void SetupAdminDeleteUserAsync(AdminDeleteUserResponse expectedReturn)
+        => Setup(c => c.AdminDeleteUserAsync(It.IsAny<AdminDeleteUserRequest>(), default))
+            .ReturnsAsync(expectedReturn);
 }

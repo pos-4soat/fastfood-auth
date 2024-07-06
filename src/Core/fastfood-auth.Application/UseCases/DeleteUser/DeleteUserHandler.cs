@@ -23,19 +23,13 @@ public class DeleteUserHandler(
         UserEntity user = mapper.Map<UserEntity>(request);
         user.Identification = user.Identification.Replace(".", string.Empty).Replace("-", string.Empty);
 
-        Console.WriteLine(user.Identification);
-
         UserEntity existingCustomer = await userRepository.GetUserByCPFOrEmailAsync(user.Identification, user.Email, cancellationToken);
-
-        Console.WriteLine(existingCustomer.Name);
 
         if (existingCustomer == null)
             return Result<DeleteUserResponse>.Failure("ABE009");
 
         await userRepository.DeleteUserAsync(user.Identification, user.Email, cancellationToken);
-        Console.WriteLine("delete");
         await userCreation.DeleteUser(user, cancellationToken);
-        Console.WriteLine("delete2");
 
         return Result<DeleteUserResponse>.Success(new DeleteUserResponse());
     }

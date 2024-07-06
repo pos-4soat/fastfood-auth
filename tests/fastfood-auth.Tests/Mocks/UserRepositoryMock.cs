@@ -14,6 +14,7 @@ public class UserRepositoryMock : BaseCustomMock<IUserRepository>
 {
     public UserRepositoryMock(TestFixture testFixture) : base(testFixture)
     {
+        SetupDeleteUserAsync();
     }
 
     public void SetupAddUserAsync(bool expectedReturn)
@@ -28,6 +29,10 @@ public class UserRepositoryMock : BaseCustomMock<IUserRepository>
         => Setup(x => x.GetUserByCPFOrEmailAsync(It.IsAny<string>(), It.IsAny<string>(), default))
             .ReturnsAsync(expectedReturn);
 
+    public void SetupDeleteUserAsync()
+        => Setup(x => x.DeleteUserAsync(It.IsAny<string>(), It.IsAny<string>(), default))
+            .Returns(Task.CompletedTask);
+
     public void VerifyAddUserAsync(Times? times = null)
         => Verify(x => x.AddUserAsync(It.IsAny<UserEntity>(), default), times ?? Times.Once());
 
@@ -36,4 +41,7 @@ public class UserRepositoryMock : BaseCustomMock<IUserRepository>
 
     public void VerifyGetUserByCPFOrEmailAsync(Times? times = null)
         => Verify(x => x.GetUserByCPFOrEmailAsync(It.IsAny<string>(), It.IsAny<string>(), default), times ?? Times.Once());
+
+    public void VerifyDeleteUserAsync(Times? times = null)
+        => Verify(x => x.DeleteUserAsync(It.IsAny<string>(), It.IsAny<string>(), default), times ?? Times.Once());
 }

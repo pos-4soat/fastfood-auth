@@ -15,12 +15,20 @@ public class UserCreationMock : BaseCustomMock<IUserCreation>
 {
     public UserCreationMock(TestFixture testFixture) : base(testFixture)
     {
+        SetupDeleteUser();
     }
 
     public void SetupCreateUser(string expectedReturn)
         => Setup(x => x.CreateUser(It.IsAny<UserEntity>(), default))
             .ReturnsAsync(expectedReturn);
 
+    public void SetupDeleteUser()
+        => Setup(x => x.DeleteUser(It.IsAny<UserEntity>(), default))
+            .Returns(Task.CompletedTask);
+
     public void VerifyCreateUser(Times? times = null)
         => Verify(x => x.CreateUser(It.IsAny<UserEntity>(), default), times ?? Times.Once());
+
+    public void VerifyDeleteUser(Times? times = null)
+        => Verify(x => x.DeleteUser(It.IsAny<UserEntity>(), default), times ?? Times.Once());
 }

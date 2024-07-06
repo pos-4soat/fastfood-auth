@@ -30,4 +30,22 @@ public class CognitoUserCreationTest : TestFixture
         _userAuthenticationMock.VerifyNoOtherCalls();
         _userCreationMock.VerifyNoOtherCalls();
     }
+
+    [Test, Description("Should delete user successfully")]
+    public async Task ShouldDeleteUserAsync()
+    {
+        var entity = _modelFakerFactory.GenerateRequest<UserEntity>();
+
+        _cognitoMock.SetupAdminDeleteUserAsync(_modelFakerFactory.GenerateRequest<AdminDeleteUserResponse>());
+
+        CognitoUserCreation service = new(_cognitoMock.Object);
+
+        var result = service.DeleteUser(entity, default);
+
+        Assert.True(result.IsCompletedSuccessfully);
+
+        _repositoryMock.VerifyNoOtherCalls();
+        _userAuthenticationMock.VerifyNoOtherCalls();
+        _userCreationMock.VerifyNoOtherCalls();
+    }
 }
