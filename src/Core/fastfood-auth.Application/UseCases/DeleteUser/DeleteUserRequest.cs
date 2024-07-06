@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace fastfood_auth.Application.UseCases.DeleteUser;
 
-public class DeleteUserRequest(string Name, string Email, string Phone, string Identification) :
+public sealed record DeleteUserRequest(string Name, string Email, string Phone, string Identification) :
     IRequest<Result<DeleteUserResponse>>;
