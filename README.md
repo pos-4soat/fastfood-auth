@@ -58,6 +58,7 @@ POST /User/CreateUser -> Responsável por criar um usuário com o seguinte json:
 {
 	"name": "nome_teste",
 	"email": "email@teste.com",
+	"phone": 999999999
 	"identification": "cpf"
 }
 ```
@@ -65,6 +66,16 @@ POST /User/CreateUser -> Responsável por criar um usuário com o seguinte json:
 GET /User/AuthenticateUser/{cpf} -> Responsável por autenticar o usuário com seu cpf
 
 GET /User/AuthenticateAsGuest -> Responsável por autenticar o usuário como anônimo
+
+POST /User/DeleteUser -> Responsável por deletar um usuário com o seguinte json:
+```
+{
+	"name": "nome_teste",
+	"email": "email@teste.com",
+	"phone": 999999999
+	"identification": "cpf"
+}
+```
 
 ## Cobertura de código
 Fluxo de cobertura de código está presente no workflow, utilizando coverlet para gerar relatório:
