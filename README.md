@@ -67,7 +67,7 @@ GET /User/AuthenticateUser/{cpf} -> Responsável por autenticar o usuário com s
 
 GET /User/AuthenticateAsGuest -> Responsável por autenticar o usuário como anônimo
 
-POST /User/DeleteUser -> Responsável por deletar um usuário com o seguinte json:
+DELETE /User/DeleteUser -> Responsável por deletar um usuário com o seguinte json:
 ```
 {
 	"name": "nome_teste",
